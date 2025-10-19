@@ -81,7 +81,7 @@ func (e *Evaluator) minus() error {
 	if e.stack.len() < 2 {
 		return ErrNotEnoughArgs
 	}
-	n := -e.stack.pop() - e.stack.pop()
+	n := -e.stack.pop() + e.stack.pop()
 	e.stack.push(n)
 	return nil
 }
