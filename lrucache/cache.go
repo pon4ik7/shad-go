@@ -2,6 +2,8 @@
 
 package lrucache
 
+import "container/list"
+
 type Cache interface {
 	// Get returns value associated with the key.
 	//
@@ -19,4 +21,15 @@ type Cache interface {
 	Range(f func(key, value int) bool)
 	// Clear removes all keys and values from the cache.
 	Clear()
+}
+
+type LRUCache struct {
+	hashTable map[int]*list.Element
+	queue     *list.List
+	cap       int
+}
+
+type entry struct {
+	key   int
+	value int
 }
